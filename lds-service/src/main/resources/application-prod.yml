@@ -2,7 +2,7 @@ server:
   port: 40100
 
 logging:
-  config: classpath:log4j2.yml
+  config: classpath:log4j2-dev.yml
 
 spring:
   profiles:

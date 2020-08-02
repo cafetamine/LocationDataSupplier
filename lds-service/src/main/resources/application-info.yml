@@ -1,0 +1,7 @@
+application:
+  title: @project.artifactId@
+  version: @project.version@
+
+spring:
+  main:
+    banner-mode: log

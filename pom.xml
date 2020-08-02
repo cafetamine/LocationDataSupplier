@@ -25,9 +25,10 @@
     </properties>
 
     <modules>
-        <module>lds-service</module>
-        <module>lds-core</module>
         <module>lds-api</module>
+        <module>lds-core</module>
+        <module>lds-repository</module>
+        <module>lds-service</module>
     </modules>
 
     <dependencyManagement>
@@ -35,12 +36,17 @@
             <!-- internal modules -->
             <dependency>
                 <groupId>com.actilive</groupId>
+                <artifactId>lds-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.actilive</groupId>
                 <artifactId>lds-core</artifactId>
                 <version>${revision}</version>
             </dependency>
             <dependency>
                 <groupId>com.actilive</groupId>
-                <artifactId>lds-api</artifactId>
+                <artifactId>lds-repository</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!-- external dependencies -->

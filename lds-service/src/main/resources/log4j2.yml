@@ -15,6 +15,8 @@ Configuration:
         value: "%clr{%d{${LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${LOG_LEVEL_PATTERN}} %clr{${LOG_TRACE_SPAN}} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%20.20t]}{faint} %clr{%-100.400c }{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
       - name: LOG_DIR
         value: "log"
+      - name: LOG_FILE
+        value: "lds"
       - name: FILE_LOG_PATTERN
         value: "%d{${LOG_DATEFORMAT_PATTERN}} ${LOG_LEVEL_PATTERN} --- [%20.20t] %-100.400c : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
 
@@ -26,8 +28,8 @@ Configuration:
         Pattern: "${sys:CONSOLE_LOG_PATTERN}"
     RollingFile:
       name: file
-      fileName: "${LOG_DIR}/nth.log"
-      filePattern: "${LOG_DIR}/nth-%i-%d{MM-dd-yyyy}.log.gz"
+      fileName: "${LOG_DIR}/${LOG_FILE}.log"
+      filePattern: "${LOG_DIR}/${LOG_FILE}-%i-%d{MM-dd-yyyy}.log.gz"
       PatternLayout:
         pattern: "${sys:FILE_LOG_PATTERN}"
       DefaultRollOverStrategy:

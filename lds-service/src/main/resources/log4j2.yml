@@ -47,4 +47,5 @@ Configuration:
     Root:
       level: debug
       AppenderRef:
-        ref: console
+        - ref: console
+        - ref: file

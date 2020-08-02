@@ -3,3 +3,7 @@ server:
 
 logging:
   config: classpath:log4j2.yml
+
+spring:
+  profiles:
+    include: info

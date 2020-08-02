@@ -27,6 +27,7 @@
     <modules>
         <module>lds-service</module>
         <module>lds-core</module>
+        <module>lds-api</module>
     </modules>
 
     <dependencyManagement>
@@ -35,6 +36,11 @@
             <dependency>
                 <groupId>com.actilive</groupId>
                 <artifactId>lds-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.actilive</groupId>
+                <artifactId>lds-api</artifactId>
                 <version>${revision}</version>
             </dependency>
             <!-- external dependencies -->

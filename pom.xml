@@ -22,6 +22,7 @@
         <revision>0.0.1-SNAPSHOT</revision>
 
         <lombok.version>1.18.12</lombok.version>
+        <vavr.version>0.10.3</vavr.version>
         <jackson.version>2.11.1</jackson.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     </properties>
@@ -57,6 +58,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.vavr</groupId>
+                <artifactId>vavr</artifactId>
+                <version>${vavr.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

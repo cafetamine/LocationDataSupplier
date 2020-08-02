@@ -26,10 +26,17 @@
 
     <modules>
         <module>lds-service</module>
+        <module>lds-core</module>
     </modules>
 
     <dependencyManagement>
         <dependencies>
+            <!-- internal modules -->
+            <dependency>
+                <groupId>com.actilive</groupId>
+                <artifactId>lds-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
             <!-- external dependencies -->
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

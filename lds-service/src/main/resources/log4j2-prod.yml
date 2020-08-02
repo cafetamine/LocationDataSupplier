@@ -1,0 +1,41 @@
+Configuration:
+  status: warn
+
+  properties:
+    property:
+      - name: LOG_EXCEPTION_CONVERSION_WORD
+        value: "%xwEx"
+      - name: LOG_LEVEL_PATTERN
+        value: "%5p"
+      - name: LOG_DATEFORMAT_PATTERN
+        value: "yyyy-MM-dd HH:mm:ss.SSS"
+      - name: LOG_TRACE_SPAN
+        value: "[%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}]"
+      - name: LOG_DIR
+        value: "log"
+      - name: FILE_LOG_PATTERN
+        value: "%d{${LOG_DATEFORMAT_PATTERN}} ${LOG_LEVEL_PATTERN} --- [%20.20t] %-100.400c : %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
+
+  appenders:
+    RollingFile:
+      name: file
+      fileName: "${LOG_DIR}/ers.log"
+      filePattern: "${LOG_DIR}/ers-%i-%d{MM-dd-yyyy}.log.gz"
+      PatternLayout:
+        pattern: "${sys:FILE_LOG_PATTERN}"
+      DefaultRollOverStrategy:
+        max: 30
+      Policies:
+        OnStartUpTriggeringPolicy: {}
+        SizeBasedTriggeringPolicy:
+          size: 10 MB
+
+  Loggers:
+    logger:
+      - name: org.springframework
+        level: info
+
+    Root:
+      level: info
+      AppenderRef:
+        ref: file

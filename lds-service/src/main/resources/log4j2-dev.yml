@@ -1,0 +1,32 @@
+Configuration:
+  status: warn
+
+  properties:
+    property:
+      - name: LOG_EXCEPTION_CONVERSION_WORD
+        value: "%xwEx"
+      - name: LOG_LEVEL_PATTERN
+        value: "%5p"
+      - name: LOG_DATEFORMAT_PATTERN
+        value: "yyyy-MM-dd HH:mm:ss.SSS"
+      - name: LOG_TRACE_SPAN
+        value: "[%X{X-B3-TraceId},%X{X-B3-SpanId},%X{X-Span-Export}]"
+      - name: CONSOLE_LOG_PATTERN
+        value: "%clr{%d{${LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${LOG_LEVEL_PATTERN}} %clr{${LOG_TRACE_SPAN}} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%20.20t]}{faint} %clr{%-100.400c }{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}"
+
+  appenders:
+    Console:
+      name: console
+      target: SYSTEM_OUT
+      PatternLayout:
+        Pattern: "${sys:CONSOLE_LOG_PATTERN}"
+
+  Loggers:
+    logger:
+      - name: org.springframework
+        level: info
+
+    Root:
+      level: debug
+      AppenderRef:
+        ref: console

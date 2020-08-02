@@ -23,6 +23,7 @@
 
         <lombok.version>1.18.12</lombok.version>
         <vavr.version>0.10.3</vavr.version>
+        <annotations.version>19.0.0</annotations.version>
         <jackson.version>2.11.1</jackson.version>
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     </properties>
@@ -63,6 +64,11 @@
                 <groupId>io.vavr</groupId>
                 <artifactId>vavr</artifactId>
                 <version>${vavr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${annotations.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.core</groupId>

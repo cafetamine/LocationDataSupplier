@@ -7,3 +7,9 @@ logging:
 spring:
   profiles:
     include: info
+  application:
+    name: @project.artifactId@
+
+eureka:
+  client:
+    enabled: false

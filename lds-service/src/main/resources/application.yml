@@ -7,3 +7,15 @@ logging:
 spring:
   profiles:
     include: info
+  application:
+    name: @project.artifactId@
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}-${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:40000/eureka

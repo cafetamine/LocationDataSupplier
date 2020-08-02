@@ -1,5 +1,5 @@
 server:
-  port: 40101
+  port: 40201
 
 logging:
   config: classpath:log4j2-dev.yml

@@ -43,6 +43,12 @@ Configuration:
     logger:
       - name: org.springframework
         level: info
+      - name: com.netflix.discovery
+        level: info
+      - name: org.hibernate.validator
+        level: info
+      - name: org.apache.http
+        level: info
 
     Root:
       level: debug

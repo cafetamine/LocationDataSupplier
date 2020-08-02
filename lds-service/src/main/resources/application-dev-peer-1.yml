@@ -1,5 +1,5 @@
 server:
-  port: 40101
+  port: 40201
 
 logging:
   config: classpath:log4j2-dev.yml
@@ -7,3 +7,15 @@ logging:
 spring:
   profiles:
     include: info
+  application:
+    name: @project.artifactId@
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}-${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:40100/eureka

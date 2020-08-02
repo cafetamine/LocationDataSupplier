@@ -1,7 +1,7 @@
 package com.actilive.lds.core.application.location;
 
-import com.actilive.lds.core.application.location.command.LocationCreateCommand;
-import com.actilive.lds.core.application.location.command.LocationUpdateCommand;
+import com.actilive.lds.core.application.location.command.LocationCommandCreate;
+import com.actilive.lds.core.application.location.command.LocationCommandUpdate;
 import com.actilive.lds.core.domain.location.LocationDto;
 import io.vavr.collection.Set;
 import org.jetbrains.annotations.NotNull;
@@ -10,13 +10,13 @@ import org.jetbrains.annotations.NotNull;
 // TODO [0.0.2-SNAPSHOT - handle failures] update docks
 public interface LocationFacade {
 
-    LocationDto create(@NotNull LocationCreateCommand location); // TODO [0.0.2-SNAPSHOT - handle failures]
+    LocationDto create(@NotNull LocationCommandCreate location); // TODO [0.0.2-SNAPSHOT - handle failures]
 
     Set<LocationDto> getAll(); // TODO [future] performance?
 
     LocationDto getById(@NotNull Long id);
 
-    LocationDto update(@NotNull LocationUpdateCommand location);
+    LocationDto update(@NotNull LocationCommandUpdate location);
 
     boolean delete(@NotNull Long id);
 

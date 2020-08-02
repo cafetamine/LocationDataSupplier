@@ -13,4 +13,12 @@
     <artifactId>lds-api</artifactId>
     <version>${revision}</version>
 
+    <dependencies>
+        <!-- external dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

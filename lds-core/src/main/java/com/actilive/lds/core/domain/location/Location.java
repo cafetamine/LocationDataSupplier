@@ -1,5 +1,6 @@
 package com.actilive.lds.core.domain.location;
 
+import com.actilive.lds.core.application.location.command.LocationCreateCommand;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,6 +20,10 @@ public class Location {
                                   final String longitude,
                                   final String altitude) {
         return new Location(null, latitude, longitude, altitude);
+    }
+
+    public static Location create(final LocationCreateCommand location) {
+        return create(location.getLatitude(), location.getLongitude(), location.getAltitude());
     }
 
 }

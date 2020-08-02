@@ -19,8 +19,8 @@ Configuration:
   appenders:
     RollingFile:
       name: file
-      fileName: "${LOG_DIR}/ers.log"
-      filePattern: "${LOG_DIR}/ers-%i-%d{MM-dd-yyyy}.log.gz"
+      fileName: "${LOG_DIR}/nth.log"
+      filePattern: "${LOG_DIR}/nth-%i-%d{MM-dd-yyyy}.log.gz"
       PatternLayout:
         pattern: "${sys:FILE_LOG_PATTERN}"
       DefaultRollOverStrategy:

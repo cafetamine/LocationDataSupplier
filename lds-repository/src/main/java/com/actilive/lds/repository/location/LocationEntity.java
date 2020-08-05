@@ -12,7 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 @Data
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Table("Location")
+@Table("LOCATION")
 public class LocationEntity {
 
     @Id

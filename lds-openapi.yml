@@ -1,0 +1,119 @@
+openapi: 3.0.1
+info:
+  title: LDS - Location Data Supplier
+  version: v1.0
+  description: |
+    LDS - API Documentation.
+
+    ## Changelog
+    Date       | Version | Changes
+    -----------|---------|----------------------------------------------------------------------------------------------------------
+    31.10.2019 |  v1.0   | <ul><li>Created api documentation file.</li><li>Created sample location endpoints.</li></ul>
+
+servers:
+  - url: http://localhost:40200
+    description: "Generated server url"
+
+paths:
+  /lds/api/v1.0/locations:
+    get:
+      tags:
+        - Locations
+      operationId: GetLocations
+      summary: Get Locations
+      description: Gets list of all locations.
+      responses:
+        200:
+          description: List of locations.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiLocation'
+    post:
+      tags:
+        - Locations
+      operationId: PostLocation
+      summary: Create Location
+      description: Create location.
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/ApiLocation'
+      responses:
+        200:
+          description: Created location.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiLocation'
+
+  /lds/api/v1.0/locations/{id}:
+    get:
+      tags:
+        - Locations
+      operationId: GetLocationById
+      summary: Get Location by id
+      description: Get information about location.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+            description: Location identitfication number.
+            example: 123
+      responses:
+        200:
+          description: Location with requested id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiLocation'
+    delete:
+      tags:
+        - Locations
+      operationId: DeleteLocation
+      summary: Deletes Location by id.
+      description: Deletes location by provided id and returns status of operation.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+            description: Location identitfication number.
+            example: 123
+      responses:
+        204:
+          description: Successfuly deleted Location. No content.
+        404:
+          description: Provided location id does not exist.
+
+# components ----------------------------------------
+components:
+  schemas:
+
+    ApiLocation:
+      type: object
+      description: Represents location.
+      required:
+        - latitude
+        - longitude
+      properties:
+        latitude:
+          type: string
+          description: Locations latitude.
+          example: 10.123123
+        longitude:
+          type: string
+          description: Locations longitude.
+          example: 11.123123
+        altitude:
+          type: string
+          description: Locations altitude.
+          example: 12.123123

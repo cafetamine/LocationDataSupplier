@@ -23,6 +23,10 @@
             <groupId>com.actilive</groupId>
             <artifactId>lds-core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.actilive</groupId>
+            <artifactId>lds-repository</artifactId>
+        </dependency>
         <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

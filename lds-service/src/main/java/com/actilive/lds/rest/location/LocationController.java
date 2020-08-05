@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.Set;
 
 @RestController
-@RequestMapping("api/v1.0/location")
+@RequestMapping("lds/api/v1.0/locations")
 public class LocationController {
 
     private final LocationFacade facade;

@@ -4,6 +4,7 @@ import com.actilive.lds.core.domain.location.Location;
 import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public interface LocationRepository {
 
@@ -61,6 +62,6 @@ public interface LocationRepository {
      * @param id cannot be null.
      * @return true if location exists otherwise false.
      */
-    boolean existsById(@NotNull Long id);
+    boolean existsById(@Nullable Long id);
 
 }

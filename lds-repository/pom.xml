@@ -13,4 +13,26 @@
     <artifactId>lds-repository</artifactId>
     <version>${revision}</version>
 
+    <dependencies>
+        <!-- internal modules -->
+        <dependency>
+            <groupId>com.actilive</groupId>
+            <artifactId>lds-core</artifactId>
+        </dependency>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jdbc</artifactId>
+        </dependency>
+        <!-- external dependencies -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+        </dependency>
+    </dependencies>
+
 </project>

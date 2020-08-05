@@ -14,6 +14,19 @@
     <version>${revision}</version>
 
     <dependencies>
+        <!-- internal modules -->
+        <dependency>
+            <groupId>com.actilive</groupId>
+            <artifactId>lds-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.actilive</groupId>
+            <artifactId>lds-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.actilive</groupId>
+            <artifactId>lds-repository</artifactId>
+        </dependency>
         <!-- spring -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -36,6 +49,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- database -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
         </dependency>
         <!-- external dependencies -->
         <dependency>

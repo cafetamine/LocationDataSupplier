@@ -4,6 +4,12 @@ server:
 logging:
   config: classpath:log4j2-dev.yml
 
+logbook:
+  format:
+    style: http
+  filter:
+    enabled: true
+
 spring:
   profiles:
     include: info

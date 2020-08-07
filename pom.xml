@@ -21,11 +21,13 @@
 
         <revision>0.0.1-SNAPSHOT</revision>
 
+        <logbook.version>2.1.4</logbook.version>
         <lombok.version>1.18.12</lombok.version>
         <vavr.version>0.10.3</vavr.version>
         <annotations.version>19.0.0</annotations.version>
         <jackson.version>2.11.1</jackson.version>
         <javax.version>2.0.1.Final</javax.version>
+
         <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
     </properties>
 
@@ -55,6 +57,11 @@
                 <version>${revision}</version>
             </dependency>
             <!-- external dependencies -->
+            <dependency>
+                <groupId>org.zalando</groupId>
+                <artifactId>logbook-spring-boot-starter</artifactId>
+                <version>${logbook.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>

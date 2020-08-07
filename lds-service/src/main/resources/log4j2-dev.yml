@@ -33,6 +33,8 @@ Configuration:
         level: info
       - name: com.zaxxer.hikari
         level: info
+      - name: org.zalando.logbook.Logbook
+        level: trace
 
     Root:
       level: debug

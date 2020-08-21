@@ -2,6 +2,8 @@ package com.actilive.lds.core.application.location;
 
 import com.actilive.lds.core.application.location.command.LocationCommandCreate;
 import com.actilive.lds.core.application.location.command.LocationCommandUpdate;
+import com.actilive.lds.core.application.location.error.LocationDuplicateOperationException;
+import com.actilive.lds.core.application.location.error.LocationNotFoundOperationException;
 import com.actilive.lds.core.domain.location.Location;
 import com.actilive.lds.core.domain.location.LocationDto;
 import io.vavr.collection.Set;
@@ -21,7 +23,8 @@ public class LocationService implements LocationFacade {
     public LocationDto create(@NotNull final LocationCommandCreate location) {
         return repository.trySave(Location.create(location))
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to save location already exists"));
+                         // TODO currently logic will never find duplicates, this will change when location will be embedded part of actual object
+                         .getOrElseThrow(LocationDuplicateOperationException::new);
     }
 
     @Override
@@ -33,14 +36,14 @@ public class LocationService implements LocationFacade {
     public LocationDto getById(@NotNull final Long id) {
         return repository.findById(id)
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to find location by id"));
+                         .getOrElseThrow(() -> new LocationNotFoundOperationException(id));
     }
 
     @Override
     public LocationDto update(@NotNull final LocationCommandUpdate location) {
         return repository.update(Location.create(location))
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to update location does not exist"));
+                         .getOrElseThrow(() -> new LocationNotFoundOperationException(location.getId()));
     }
 
     @Override

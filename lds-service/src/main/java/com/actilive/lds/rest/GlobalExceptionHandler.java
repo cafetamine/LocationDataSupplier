@@ -60,21 +60,4 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<>(new ApiError(errorCode, errorMessage), ApiErrorCodeAdapter.getHttpStatus(errorCode));
     }
 
-    // TODO move
-    private static class ApiErrorCodeAdapter {
-
-        private static final Map<ApiErrorCode, HttpStatus> ApiErrorToHttpStatusMap = new HashMap();
-        static {
-            ApiErrorToHttpStatusMap.put(ApiErrorCode.MarkBadRequest, HttpStatus.BAD_REQUEST);
-            ApiErrorToHttpStatusMap.put(ApiErrorCode.InternalServerError, HttpStatus.INTERNAL_SERVER_ERROR);
-
-            Assert.isTrue(ApiErrorToHttpStatusMap.values().size() == ApiErrorCode.values().length, "Not all ApiErrorCodes were registered");
-        }
-
-        public static @NotNull HttpStatus getHttpStatus(@NotNull final ApiErrorCode apiCode) {
-            return ApiErrorToHttpStatusMap.getOrDefault(apiCode, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-
 }

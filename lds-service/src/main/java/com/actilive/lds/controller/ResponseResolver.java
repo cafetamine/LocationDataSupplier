@@ -1,4 +1,4 @@
-package com.actilive.lds.rest;
+package com.actilive.lds.controller;
 
 import com.actilive.lds.core.domain.ErrorResult;
 import io.vavr.control.Either;

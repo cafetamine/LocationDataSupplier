@@ -1,11 +1,11 @@
-package com.actilive.lds.rest.location;
+package com.actilive.lds.controller.location;
 
 import com.actilive.lds.api.location.ApiLocation;
 import com.actilive.lds.core.application.location.LocationError;
 import com.actilive.lds.core.application.location.LocationFacade;
 import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.LocationDto;
-import com.actilive.lds.rest.location.adapter.LocationApiAdapter;
+import com.actilive.lds.controller.location.adapter.LocationApiAdapter;
 import io.vavr.control.Either;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;

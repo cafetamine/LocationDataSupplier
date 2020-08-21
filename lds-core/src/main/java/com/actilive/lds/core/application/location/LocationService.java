@@ -2,12 +2,13 @@ package com.actilive.lds.core.application.location;
 
 import com.actilive.lds.core.application.location.command.LocationCommandCreate;
 import com.actilive.lds.core.application.location.command.LocationCommandUpdate;
+import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.Location;
 import com.actilive.lds.core.domain.location.LocationDto;
 import io.vavr.collection.Set;
+import io.vavr.control.Either;
 import org.jetbrains.annotations.NotNull;
 
-// TODO [0.0.2-SNAPSHOT - handle failures] replace throws with io.vavr.control
 // TODO [0.0.2-SNAPSHOT] logging peek(() -> ...)
 public class LocationService implements LocationFacade {
 
@@ -18,29 +19,29 @@ public class LocationService implements LocationFacade {
     }
 
     @Override
-    public LocationDto create(@NotNull final LocationCommandCreate location) {
-        return repository.trySave(Location.create(location))
+    public @NotNull Either<ErrorResult<LocationError>, LocationDto> create(@NotNull final LocationCommandCreate command) {
+        return repository.trySave(Location.Create(command))
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to save location already exists"));
+                         .toEither(new ErrorResult<>(LocationError.Duplicate, "Location already exists."));
     }
 
     @Override
-    public Set<LocationDto> getAll() {
+    public @NotNull Set<LocationDto> getAll() {
         return repository.findAll().map(LocationDto::fromDomain);
     }
 
     @Override
-    public LocationDto getById(@NotNull final Long id) {
+    public Either<ErrorResult<LocationError>, LocationDto> getById(@NotNull final Long id) {
         return repository.findById(id)
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to find location by id"));
+                         .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + id + ") not found."));
     }
 
     @Override
-    public LocationDto update(@NotNull final LocationCommandUpdate location) {
-        return repository.update(Location.create(location))
+    public Either<ErrorResult<LocationError>, LocationDto> update(@NotNull final LocationCommandUpdate location) {
+        return repository.update(Location.Create(location))
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new RuntimeException("failed to update location does not exist"));
+                         .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + location.getId() + ") not found."));
     }
 
     @Override

@@ -1,14 +1,16 @@
 package com.actilive.lds.rest;
 
+import com.actilive.lds.api.ApiError;
 import com.actilive.lds.api.ApiErrorCode;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class ApiErrorCodeAdapter {
+public class ApiErrorAdapter {
 
     private static final Map<ApiErrorCode, HttpStatus> ApiErrorToHttpStatusMap = new HashMap();
     static {
@@ -22,6 +24,11 @@ public class ApiErrorCodeAdapter {
 
     public static @NotNull HttpStatus getHttpStatus(@NotNull final ApiErrorCode apiCode) {
         return ApiErrorToHttpStatusMap.getOrDefault(apiCode, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    public static @NotNull ResponseEntity<Object> mapResponse(final @NotNull ApiErrorCode errorCode,
+                                                              final @NotNull String errorMessage) {
+        return new ResponseEntity<>(new ApiError(errorCode, errorMessage), getHttpStatus(errorCode));
     }
 
 }

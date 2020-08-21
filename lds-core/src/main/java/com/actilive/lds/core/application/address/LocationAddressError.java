@@ -1,6 +1,6 @@
 package com.actilive.lds.core.application.address;
 
-public enum AddressError {
+public enum LocationAddressError {
 
     NotFound,
     Duplicate

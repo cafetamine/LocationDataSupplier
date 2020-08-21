@@ -3,9 +3,8 @@ package com.actilive.lds.core.application.address.command;
 import lombok.Value;
 
 @Value(staticConstructor = "Create")
-public class AddressUpdateCommand {
+public class LocationAddressCreateCommand {
 
-    Long id;
     String country;
     String state;
     String city;

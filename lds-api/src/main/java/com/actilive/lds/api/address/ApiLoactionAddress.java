@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.validation.constraints.NotBlank;
 
 @Value
-public class ApiAddress {
+public class ApiLoactionAddress {
 
     @NotNull
     @NotBlank

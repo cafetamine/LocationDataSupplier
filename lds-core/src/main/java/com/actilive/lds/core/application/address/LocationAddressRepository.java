@@ -1,54 +1,54 @@
 package com.actilive.lds.core.application.address;
 
-import com.actilive.lds.core.domain.address.Address;
+import com.actilive.lds.core.domain.address.LoactionAddress;
 import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface AddressRepository {
+public interface LocationAddressRepository {
 
     /**
-     * Creates AddressEntity and saves it database.
+     * Creates LocationAddressEntity and saves it database.
      * If address for given id already exists it will be overwritten.
      *
      * @param address with nullable id.
-     * @return saved Address instance with unique id.
+     * @return saved LocationAddress instance with unique id.
      */
-    Address save(@NotNull Address address);
+    LoactionAddress save(@NotNull LoactionAddress address);
 
     /**
-     * Attempts to create AddressEntity and save it in database.
+     * Attempts to create LocationAddressEntity and save it in database.
      * If address for given id already exists, will return io.vavr.control.Option.None instead.
      *
      * @param address with nullable id.
-     * @return saved Address instance or io.vavr.control.Option.None.
+     * @return saved LocationAddress instance or io.vavr.control.Option.None.
      */
-    Option<Address> trySave(@NotNull Address address);
+    Option<LoactionAddress> trySave(@NotNull LoactionAddress address);
 
     /**
-     * @return List of all Addresses stored in database.
+     * @return List of all LoactionAddresses stored in database.
      */
-    Set<Address> findAll(); // TODO [future] performance?
+    Set<LoactionAddress> findAll(); // TODO [future] performance?
 
     /**
      * @param id cannot be null.
-     * @return Address retrieved form database if exists else io.vavr.control.Option.None.
+     * @return LocationAddress retrieved form database if exists else io.vavr.control.Option.None.
      */
-    Option<Address> findById(@NotNull Long id);
+    Option<LoactionAddress> findById(@NotNull Long id);
 
     /**
-     * Attempts to retrieve Address form database by provided id.
+     * Attempts to retrieve LocationAddress form database by provided id.
      * If found will overwrite stored entity with provided.
      * If not found will return io.vavr.control.Option.None instead.
      *
      * @param address with updated data (other than id).
-     * @return updated Address or io.vavr.control.Option.None.
+     * @return updated LocationAddress or io.vavr.control.Option.None.
      */
-    Option<Address> update(@NotNull Address address);
+    Option<LoactionAddress> update(@NotNull LoactionAddress address);
 
     /**
-     * Attempts retrieve Address form database by provided id.
+     * Attempts retrieve LocationAddress form database by provided id.
      * If found will delete this entity from database.
      *
      * @param id cannot be null.

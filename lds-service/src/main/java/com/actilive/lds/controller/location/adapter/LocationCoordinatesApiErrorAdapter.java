@@ -1,7 +1,7 @@
 package com.actilive.lds.controller.location.adapter;
 
 import com.actilive.lds.api.ApiErrorCode;
-import com.actilive.lds.core.application.location.LocationError;
+import com.actilive.lds.core.application.coordinates.LocationCoordinatesError;
 import io.vavr.collection.Stream;
 import io.vavr.control.Option;
 import lombok.AccessLevel;
@@ -11,23 +11,23 @@ import lombok.experimental.FieldDefaults;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
 
-public class LocationApiErrorAdapter {
+public class LocationCoordinatesApiErrorAdapter {
 
     @AllArgsConstructor
     @Getter
     @FieldDefaults(level = AccessLevel.PRIVATE)
     public enum LocationApiErrorMapping {
 
-        LocationNotFound(LocationError.NotFound, ApiErrorCode.LocationNotFound, HttpStatus.NOT_FOUND),
-        LocationDuplicate(LocationError.Duplicate, ApiErrorCode.LocationDuplicate, HttpStatus.CONFLICT);
+        LocationCoordinatesNotFound(LocationCoordinatesError.NotFound, ApiErrorCode.LocationCoordinatesNotFound, HttpStatus.NOT_FOUND),
+        LocationCoordinatesDuplicate(LocationCoordinatesError.Duplicate, ApiErrorCode.LocationCoordinatesDuplicate, HttpStatus.CONFLICT);
 
-        final LocationError locationError;
+        final LocationCoordinatesError locationError;
         final ApiErrorCode errorCode;
         final HttpStatus httpStatus;
 
     }
 
-    public static Option<LocationApiErrorMapping> Of(@NotNull final LocationError error) {
+    public static Option<LocationApiErrorMapping> Of(@NotNull final LocationCoordinatesError error) {
         return Stream.of(LocationApiErrorMapping.values()).find(mapping -> mapping.locationError == error);
     }
 

@@ -1,4 +1,4 @@
-package com.actilive.lds.api.location;
+package com.actilive.lds.api.coordinates;
 
 import lombok.Value;
 import org.jetbrains.annotations.Nullable;
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 @Value
-public class ApiLocation {
+public class ApiLocationCoordinates {
 
     @NotNull
     @NotBlank

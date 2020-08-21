@@ -1,7 +1,7 @@
 drop table if exists LOCATION;
 drop table if exists ADDRESS;
 
-create table LOCATION(
+create table LOCATION_COORDINATES(
   Id bigint auto_increment primary key,
   Latitude varchar(25) not null,
   Longitude varchar(25) not null,

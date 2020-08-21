@@ -1,4 +1,4 @@
-insert into LOCATION (Latitude, Longitude, Altitude)
+insert into LOCATION_COORDINATES (Latitude, Longitude, Altitude)
      values ('10.123456', '10.123456', '10.123456'),
             ('11.123456', '11.123456', '11.123456'),
             ('12.123456', '12.123456', '12.123456');

@@ -1,10 +1,10 @@
 package com.actilive.lds.infrastructure.location;
 
-import com.actilive.lds.core.application.location.LocationFacade;
-import com.actilive.lds.core.application.location.LocationRepository;
-import com.actilive.lds.core.application.location.LocationService;
-import com.actilive.lds.repository.location.LocationCrudRepository;
-import com.actilive.lds.repository.location.LocationJdbcRepository;
+import com.actilive.lds.core.application.coordinates.LocationCoordinatesFacade;
+import com.actilive.lds.core.application.coordinates.LocationCoordinatesRepository;
+import com.actilive.lds.core.application.coordinates.LocationCoordinatesService;
+import com.actilive.lds.repository.coordinates.LocationCoordinatesCrudRepository;
+import com.actilive.lds.repository.coordinates.LocationCoordinatesJdbcRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class LocationConfiguration {
 
     @Bean
-    LocationRepository locationRepository(final LocationCrudRepository locationCrudRepository) {
-        return new LocationJdbcRepository(locationCrudRepository);
+    LocationCoordinatesRepository locationRepository(final LocationCoordinatesCrudRepository locationCoordinatesCrudRepository) {
+        return new LocationCoordinatesJdbcRepository(locationCoordinatesCrudRepository);
     }
 
     @Bean
-    LocationFacade locationFacade(final LocationRepository locationRepository) {
-        return new LocationService(locationRepository);
+    LocationCoordinatesFacade locationFacade(final LocationCoordinatesRepository locationRepository) {
+        return new LocationCoordinatesService(locationRepository);
     }
 
 }

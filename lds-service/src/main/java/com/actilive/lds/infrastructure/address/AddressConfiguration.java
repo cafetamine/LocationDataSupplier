@@ -1,10 +1,10 @@
 package com.actilive.lds.infrastructure.address;
 
-import com.actilive.lds.core.application.address.LocationAddressFacade;
-import com.actilive.lds.core.application.address.LocationAddressRepository;
-import com.actilive.lds.core.application.address.LocationAddressService;
-import com.actilive.lds.repository.address.LocationAddressCrudRepository;
-import com.actilive.lds.repository.address.LocationAddressJdbcRepository;
+import com.actilive.lds.core.application.location.address.LocationAddressFacade;
+import com.actilive.lds.core.application.location.address.LocationAddressRepository;
+import com.actilive.lds.core.application.location.address.LocationAddressService;
+import com.actilive.lds.repository.location.address.LocationAddressCrudRepository;
+import com.actilive.lds.repository.location.address.LocationAddressJdbcRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

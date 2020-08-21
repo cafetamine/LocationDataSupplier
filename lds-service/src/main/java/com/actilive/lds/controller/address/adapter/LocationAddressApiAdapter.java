@@ -1,8 +1,8 @@
 package com.actilive.lds.controller.address.adapter;
 
-import com.actilive.lds.api.address.ApiLoactionAddress;
-import com.actilive.lds.core.application.address.command.LocationAddressCreateCommand;
-import com.actilive.lds.core.domain.address.LocationAddressDto;
+import com.actilive.lds.api.location.address.ApiLoactionAddress;
+import com.actilive.lds.core.application.location.address.command.LocationAddressCreateCommand;
+import com.actilive.lds.core.domain.location.address.LocationAddressDto;
 import io.vavr.collection.Set;
 import org.jetbrains.annotations.NotNull;
 

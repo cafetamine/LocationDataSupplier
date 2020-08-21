@@ -1,10 +1,10 @@
 package com.actilive.lds.infrastructure.location;
 
-import com.actilive.lds.core.application.coordinates.LocationCoordinatesFacade;
-import com.actilive.lds.core.application.coordinates.LocationCoordinatesRepository;
-import com.actilive.lds.core.application.coordinates.LocationCoordinatesService;
-import com.actilive.lds.repository.coordinates.LocationCoordinatesCrudRepository;
-import com.actilive.lds.repository.coordinates.LocationCoordinatesJdbcRepository;
+import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesFacade;
+import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesRepository;
+import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesService;
+import com.actilive.lds.repository.location.coordinates.LocationCoordinatesCrudRepository;
+import com.actilive.lds.repository.location.coordinates.LocationCoordinatesJdbcRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

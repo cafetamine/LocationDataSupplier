@@ -1,7 +1,7 @@
 package com.actilive.lds.controller.address.adapter;
 
 import com.actilive.lds.api.ApiErrorCode;
-import com.actilive.lds.core.application.address.LocationAddressError;
+import com.actilive.lds.core.application.location.address.LocationAddressError;
 import io.vavr.collection.Stream;
 import io.vavr.control.Option;
 import lombok.AccessLevel;

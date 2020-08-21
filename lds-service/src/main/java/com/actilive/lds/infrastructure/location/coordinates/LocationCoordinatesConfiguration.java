@@ -1,4 +1,4 @@
-package com.actilive.lds.infrastructure.location;
+package com.actilive.lds.infrastructure.location.coordinates;
 
 import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesFacade;
 import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesRepository;
@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class LocationConfiguration {
+public class LocationCoordinatesConfiguration {
 
     @Bean
     LocationCoordinatesRepository locationRepository(final LocationCoordinatesCrudRepository locationCoordinatesCrudRepository) {

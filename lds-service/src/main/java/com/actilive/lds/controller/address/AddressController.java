@@ -46,7 +46,7 @@ public class AddressController {
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable("id") final Long id) {
-        return facade.delete(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        return facade.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : ResponseEntity.notFound().build();
     }
 
 }

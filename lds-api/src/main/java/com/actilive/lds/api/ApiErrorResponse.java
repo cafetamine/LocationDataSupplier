@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.validation.constraints.NotBlank;
 
 @Value
-public class ApiError {
+public class ApiErrorResponse {
 
     @NotNull
     ApiErrorCode errorCode;

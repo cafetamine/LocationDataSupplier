@@ -1,6 +1,6 @@
 package com.actilive.lds.rest;
 
-import com.actilive.lds.api.ApiError;
+import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.api.ApiErrorCode;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpStatus;
@@ -28,7 +28,7 @@ public class ApiErrorAdapter {
 
     public static @NotNull ResponseEntity<Object> mapResponse(final @NotNull ApiErrorCode errorCode,
                                                               final @NotNull String errorMessage) {
-        return new ResponseEntity<>(new ApiError(errorCode, errorMessage), getHttpStatus(errorCode));
+        return new ResponseEntity<>(new ApiErrorResponse(errorCode, errorMessage), getHttpStatus(errorCode));
     }
 
 }

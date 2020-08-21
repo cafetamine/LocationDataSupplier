@@ -18,14 +18,14 @@ public class Location {
     String altitude;
 
 
-    public static Location create(final LocationCommandCreate location) {
+    public static Location Create(final LocationCommandCreate location) {
         return new Location(null,
                             location.getLatitude(),
                             location.getLongitude(),
                             location.getAltitude());
     }
 
-    public static Location create(final LocationCommandUpdate location) {
+    public static Location Create(final LocationCommandUpdate location) {
         return new Location(location.getId(),
                             location.getLatitude(),
                             location.getLongitude(),

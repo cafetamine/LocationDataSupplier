@@ -2,14 +2,13 @@ package com.actilive.lds.core.application.location;
 
 import com.actilive.lds.core.application.location.command.LocationCommandCreate;
 import com.actilive.lds.core.application.location.command.LocationCommandUpdate;
-import com.actilive.lds.core.application.location.error.LocationDuplicateOperationException;
-import com.actilive.lds.core.application.location.error.LocationNotFoundOperationException;
+import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.Location;
 import com.actilive.lds.core.domain.location.LocationDto;
 import io.vavr.collection.Set;
+import io.vavr.control.Either;
 import org.jetbrains.annotations.NotNull;
 
-// TODO [0.0.2-SNAPSHOT - handle failures] replace throws with io.vavr.control
 // TODO [0.0.2-SNAPSHOT] logging peek(() -> ...)
 public class LocationService implements LocationFacade {
 
@@ -20,30 +19,29 @@ public class LocationService implements LocationFacade {
     }
 
     @Override
-    public LocationDto create(@NotNull final LocationCommandCreate location) {
-        return repository.trySave(Location.create(location))
+    public @NotNull Either<ErrorResult<LocationError>, LocationDto> create(@NotNull final LocationCommandCreate command) {
+        return repository.trySave(Location.Create(command))
                          .map(LocationDto::fromDomain)
-                         // TODO currently logic will never find duplicates, this will change when location will be embedded part of actual object
-                         .getOrElseThrow(LocationDuplicateOperationException::new);
+                         .toEither(new ErrorResult<>(LocationError.Duplicate, "Location already exists."));
     }
 
     @Override
-    public Set<LocationDto> getAll() {
+    public @NotNull Set<LocationDto> getAll() {
         return repository.findAll().map(LocationDto::fromDomain);
     }
 
     @Override
-    public LocationDto getById(@NotNull final Long id) {
+    public Either<ErrorResult<LocationError>, LocationDto> getById(@NotNull final Long id) {
         return repository.findById(id)
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new LocationNotFoundOperationException(id));
+                         .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + id + ") not found."));
     }
 
     @Override
-    public LocationDto update(@NotNull final LocationCommandUpdate location) {
-        return repository.update(Location.create(location))
+    public Either<ErrorResult<LocationError>, LocationDto> update(@NotNull final LocationCommandUpdate location) {
+        return repository.update(Location.Create(location))
                          .map(LocationDto::fromDomain)
-                         .getOrElseThrow(() -> new LocationNotFoundOperationException(location.getId()));
+                         .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + location.getId() + ") not found."));
     }
 
     @Override

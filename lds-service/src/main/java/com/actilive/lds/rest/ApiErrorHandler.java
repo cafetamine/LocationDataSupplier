@@ -1,8 +1,7 @@
 package com.actilive.lds.rest;
 
-import com.actilive.lds.api.ApiError;
+import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.api.ApiErrorCode;
-import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.util.stream.Collectors;
 
-@Slf4j
 @RestControllerAdvice
 public class ApiErrorHandler extends ResponseEntityExceptionHandler {
 
@@ -24,30 +22,30 @@ public class ApiErrorHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected @NotNull ResponseEntity<Object> handleMethodArgumentNotValid(
-            final @NotNull MethodArgumentNotValidException ex,
-            final @NotNull HttpHeaders headers,
-            final @NotNull HttpStatus status,
-            final @NotNull WebRequest request) {
+            @NotNull final MethodArgumentNotValidException ex,
+            @NotNull final HttpHeaders headers,
+            @NotNull final HttpStatus status,
+            @NotNull final WebRequest request) {
         final String errorMessage = ex.getBindingResult()
                                       .getFieldErrors()
                                       .stream()
                                       .map(e -> e.getField() + " " + e.getDefaultMessage())
                                       .collect(Collectors.joining(", "));
-        return new ResponseEntity<>(new ApiError(ApiErrorCode.MarkBadRequest, errorMessage), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ApiErrorResponse(ApiErrorCode.MarkBadRequest, errorMessage), HttpStatus.BAD_REQUEST);
     }
 
     @Override
     protected @NotNull ResponseEntity<Object> handleHttpMessageNotReadable(
-            final @NotNull HttpMessageNotReadableException ex,
-            final @NotNull HttpHeaders headers,
-            final @NotNull HttpStatus status,
-            final @NotNull WebRequest request) {
+            @NotNull final HttpMessageNotReadableException ex,
+            @NotNull final HttpHeaders headers,
+            @NotNull final HttpStatus status,
+            @NotNull final WebRequest request) {
         final String errorMessage = ex.getMessage() != null ? ex.getMessage() : UnknownApiErrorMessage;
         return ApiErrorAdapter.mapResponse(ApiErrorCode.MarkBadRequest, errorMessage);
     }
 
     @ExceptionHandler(Exception.class)
-    public @NotNull ResponseEntity<?> handleException(final @NotNull Exception ex) {
+    public @NotNull ResponseEntity<?> handleException(@NotNull final Exception ex) {
         final String errorMessage = ex.getMessage() != null ? ex.getMessage() : UnknownApiErrorMessage;
         return ApiErrorAdapter.mapResponse(ApiErrorCode.InternalServerError, errorMessage);
     }

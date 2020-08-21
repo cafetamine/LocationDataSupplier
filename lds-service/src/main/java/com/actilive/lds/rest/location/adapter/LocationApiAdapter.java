@@ -8,20 +8,20 @@ import org.jetbrains.annotations.NotNull;
 
 public class LocationApiAdapter {
 
-    public static LocationCommandCreate fromApi(@NotNull final ApiLocation location) {
+    public static LocationCommandCreate FromApi(@NotNull final ApiLocation location) {
         return LocationCommandCreate.create(location.getLatitude(),
                                             location.getLongitude(),
                                             location.getAltitude());
     }
 
-    public static ApiLocation toApi(@NotNull final LocationDto location) {
+    public static ApiLocation ToApi(@NotNull final LocationDto location) {
         return new ApiLocation(location.getLatitude(),
                                location.getLongitude(),
                                location.getAltitude());
     }
 
-    public static java.util.Set<ApiLocation> toApi(@NotNull final Set<LocationDto> locations) {
-        return locations.map(LocationApiAdapter::toApi).toJavaSet();
+    public static java.util.Set<ApiLocation> ToApi(@NotNull final Set<LocationDto> locations) {
+        return locations.map(LocationApiAdapter::ToApi).toJavaSet();
     }
 
 }

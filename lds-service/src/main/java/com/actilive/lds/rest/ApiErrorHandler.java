@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @RestControllerAdvice
-public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
+public class ApiErrorHandler extends ResponseEntityExceptionHandler {
 
     private static final String UnknownApiErrorMessage = "Unexpected error occurred.";
 

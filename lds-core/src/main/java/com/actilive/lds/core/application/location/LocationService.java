@@ -21,26 +21,26 @@ public class LocationService implements LocationFacade {
     @Override
     public @NotNull Either<ErrorResult<LocationError>, LocationDto> create(@NotNull final LocationCommandCreate command) {
         return repository.trySave(Location.Create(command))
-                         .map(LocationDto::fromDomain)
+                         .map(LocationDto::FromDomain)
                          .toEither(new ErrorResult<>(LocationError.Duplicate, "Location already exists."));
     }
 
     @Override
     public @NotNull Set<LocationDto> getAll() {
-        return repository.findAll().map(LocationDto::fromDomain);
+        return repository.findAll().map(LocationDto::FromDomain);
     }
 
     @Override
     public Either<ErrorResult<LocationError>, LocationDto> getById(@NotNull final Long id) {
         return repository.findById(id)
-                         .map(LocationDto::fromDomain)
+                         .map(LocationDto::FromDomain)
                          .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + id + ") not found."));
     }
 
     @Override
     public Either<ErrorResult<LocationError>, LocationDto> update(@NotNull final LocationCommandUpdate location) {
         return repository.update(Location.Create(location))
-                         .map(LocationDto::fromDomain)
+                         .map(LocationDto::FromDomain)
                          .toEither(new ErrorResult<>(LocationError.NotFound, "Location (id=" + location.getId() + ") not found."));
     }
 

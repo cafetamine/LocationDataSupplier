@@ -17,7 +17,7 @@ public class LocationJdbcRepository implements LocationRepository {
 
     @Override
     public Location save(@NotNull final Location location) {
-        return repository.save(LocationEntity.fromDomain(location)).toDomain();
+        return repository.save(LocationEntity.FromDomain(location)).ToDomain();
     }
 
     @Override
@@ -27,13 +27,13 @@ public class LocationJdbcRepository implements LocationRepository {
 
     @Override
     public Set<Location> findAll() {
-        return HashSet.ofAll(repository.findAll()).map(LocationEntity::toDomain);
+        return HashSet.ofAll(repository.findAll()).map(LocationEntity::ToDomain);
     }
 
     @Override
     public Option<Location> findById(@NotNull final Long id) {
         return Option.ofOptional(repository.findById(id))
-                     .map(LocationEntity::toDomain);
+                     .map(LocationEntity::ToDomain);
     }
 
     @Override

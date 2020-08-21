@@ -41,12 +41,12 @@ public class AddressController {
     @PostMapping
     public ResponseEntity<?> create(@RequestBody @Valid final ApiAddress address) {
         final Either<ErrorResult<AddressError>, AddressDto> result = facade.create(AddressApiAdapter.FromApi(address));
-        return resolver.resolve(result, __ -> new ResponseEntity<>(HttpStatus.NO_CONTENT));
+        return resolver.resolve(result, __ -> new ResponseEntity<>(HttpStatus.CREATED));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<?> delete(@PathVariable("id") final Long id) {
-        return facade.delete(id) ? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+        return facade.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT) : ResponseEntity.notFound().build();
     }
 
 }

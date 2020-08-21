@@ -8,7 +8,7 @@ info:
     ## Changelog
     Date       | Version | Changes
     -----------|---------|----------------------------------------------------------------------------------------------------------
-    31.10.2019 |  v1.0   | <ul><li>Created api documentation file.</li><li>Created sample location endpoints.</li></ul>
+    xx.xx.2020 |  v1.0   | First api version.
 
 servers:
   - url: http://localhost:40200
@@ -43,12 +43,30 @@ paths:
             schema:
               $ref: '#/components/schemas/ApiLocation'
       responses:
-        200:
-          description: Created location.
+        201:
+          description: Successfuly created location.
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiLocation'
+        400:
+          description: Request body is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'MarkBadRequest'
+                errorMessage: 'latitude must not be blank, latitude must not be null'
+        409:
+          description: Created Loaction already exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'LoactionDuplicate'
+                message: 'Location (id=1) not found.'
 
   /lds/api/v1.0/locations/{id}:
     get:
@@ -73,6 +91,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ApiLocation'
+        404:
+          description: Loaction for provided id does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'LoactionNotFound'
+                message: 'Location (id=1) not found.'
     delete:
       tags:
         - Locations
@@ -92,11 +119,146 @@ paths:
         204:
           description: Successfuly deleted Location. No content.
         404:
-          description: Provided location id does not exist.
+          description: Loaction for provided id does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'LoactionNotFound'
+                message: 'Location (id=1) not found.'
+
+  /lds/api/v1.0/addresses:
+    get:
+      tags:
+        - Addresses
+      operationId: GetAddresses
+      summary: Get Addresses
+      description: Gets list of all addresses.
+      responses:
+        200:
+          description: List of addresses.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiAddress'
+    post:
+      tags:
+        - Addresses
+      operationId: PostAdddress
+      summary: Create Address
+      description: Create address.
+      requestBody:
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/ApiAddress'
+      responses:
+        201:
+          description: Successfuly created address.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiAddress'
+        400:
+          description: Request body is invalid.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'MarkBadRequest'
+                errorMessage: 'city must not be blank, city must not be null'
+        409:
+          description: Created Address already exists.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'AddressDuplicate'
+                message: 'Address (id=1) not found.'
+
+  /lds/api/v1.0/addresses/{id}:
+    get:
+      tags:
+        - Addresses
+      operationId: GetAddressById
+      summary: Get Address by id
+      description: Get information about address.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+            description: Address identitfication number.
+            example: 123
+      responses:
+        200:
+          description: Address with requested id.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiAddress'
+        404:
+          description: Address for provided id does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'AddressNotFound'
+                message: 'Address (id=1) not found.'
+    delete:
+      tags:
+        - Addresses
+      operationId: Delete Address
+      summary: Deletes Address by id.
+      description: Deletes address by provided id and returns status of operation.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: number
+            format: int64
+            description: Address identitfication number.
+            example: 123
+      responses:
+        204:
+          description: Successfuly deleted Address. No content.
+        404:
+          description: Address for provided id does not exist.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiErrorResponse'
+              example:
+                errorCode: 'AddressNotFound'
+                message: 'Address (id=1) not found.'
 
 # components ----------------------------------------
 components:
   schemas:
+
+    ApiErrorResponse:
+      type: object
+      description: Description of error which occurred while processing api call.
+      required:
+        - errorCode
+        - errorMessage
+      properties:
+        errorCode:
+          type: string
+          description: Name of api error.
+          example: LoactionNotFound
+        errorMessage:
+          type: string
+          description: Detailed message about api error.
 
     ApiLocation:
       type: object
@@ -117,3 +279,39 @@ components:
           type: string
           description: Locations altitude.
           example: 12.123123
+
+    ApiAddress:
+      type: object
+      description: Represents address.
+      required:
+        - country
+        - state
+        - city
+        - street
+        - number
+        - postalCode
+      properties:
+        country:
+          type: string
+          description: Name of country.
+          example: Poland
+        state:
+          type: string
+          description: Name of country state or provice.
+          example: Małopolska
+        city:
+          type: string
+          description: Name of city.
+          example: Kraków
+        street:
+          type: string
+          description: Name of street.
+          example: Grodzka
+        number:
+          type: string
+          description: Number of building, second line of address.
+          example:
+        postalCode:
+          type: string
+          description: Postal code.
+          example: 31-006

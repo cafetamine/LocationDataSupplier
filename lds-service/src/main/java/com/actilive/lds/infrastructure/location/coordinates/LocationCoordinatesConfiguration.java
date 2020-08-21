@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class LocationCoordinatesConfiguration {
 
     @Bean
-    LocationCoordinatesRepository locationRepository(final LocationCoordinatesCrudRepository locationCoordinatesCrudRepository) {
+    LocationCoordinatesRepository locationCoordinatesRepository(final LocationCoordinatesCrudRepository locationCoordinatesCrudRepository) {
         return new LocationCoordinatesJdbcRepository(locationCoordinatesCrudRepository);
     }
 
     @Bean
-    LocationCoordinatesFacade locationFacade(final LocationCoordinatesRepository locationRepository) {
-        return new LocationCoordinatesService(locationRepository);
+    LocationCoordinatesFacade locationCoordinatesFacade(final LocationCoordinatesRepository locationCoordinatesRepository) {
+        return new LocationCoordinatesService(locationCoordinatesRepository);
     }
 
 }

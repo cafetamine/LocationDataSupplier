@@ -12,13 +12,13 @@ import org.springframework.context.annotation.Configuration;
 public class LocationAddressConfiguration {
 
     @Bean
-    LocationAddressRepository addressRepository(final LocationAddressCrudRepository addressCrudRepository) {
-        return new LocationAddressJdbcRepository(addressCrudRepository);
+    LocationAddressRepository locationAddressRepository(final LocationAddressCrudRepository locationAddressCrudRepository) {
+        return new LocationAddressJdbcRepository(locationAddressCrudRepository);
     }
 
     @Bean
-    LocationAddressFacade addressFacade(final LocationAddressRepository addressRepository) {
-        return new LocationAddressService(addressRepository);
+    LocationAddressFacade addressFacade(final LocationAddressRepository locationAddressRepository) {
+        return new LocationAddressService(locationAddressRepository);
     }
 
 }

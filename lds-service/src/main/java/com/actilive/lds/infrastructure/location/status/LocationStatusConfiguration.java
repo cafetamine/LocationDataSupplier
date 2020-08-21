@@ -1,8 +1,5 @@
 package com.actilive.lds.infrastructure.location.status;
 
-import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesFacade;
-import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesRepository;
-import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesService;
 import com.actilive.lds.core.application.location.status.LocationStatusFacade;
 import com.actilive.lds.core.application.location.status.LocationStatusRepository;
 import com.actilive.lds.core.application.location.status.LocationStatusService;

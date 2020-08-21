@@ -6,162 +6,174 @@
 	},
 	"item": [
 		{
-			"name": "CreateAddress",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"country\": \"{{AddressCountry}}\",\r\n    \"state\": \"{{AddressState}}\",\r\n    \"city\": \"{{AddressCity}}\",\r\n    \"street\": \"{{AddressStreet}}\",\r\n    \"number\": \"{{AddressNumber}}\",\r\n    \"postalCode\": \"{{AddressPostalCode}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+			"name": "LocationAddress",
+			"item": [
+				{
+					"name": "CreateAddress",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"country\": \"{{LocationAddressCountry}}\",\r\n    \"state\": \"{{LocationAddressState}}\",\r\n    \"city\": \"{{LocationAddressCity}}\",\r\n    \"street\": \"{{LocationAddressStreet}}\",\r\n    \"number\": \"{{LocationAddressNumber}}\",\r\n    \"postalCode\": \"{{LocationAddressPostalCode}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"addresses"
+							]
+						},
+						"description": "Request to create new Address."
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/addresses",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"addresses"
-					]
+				{
+					"name": "GetAllAdresses",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/addresses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"addresses"
+							]
+						},
+						"description": "Request to revice all stored Addresses."
+					},
+					"response": []
 				},
-				"description": "Request to create new Address."
-			},
-			"response": []
+				{
+					"name": "GetAdressesById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/addresses/{{LocationAddressId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"addresses",
+								"{{LocationAddressId}}"
+							]
+						},
+						"description": "Request to get Address by its id."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		},
 		{
-			"name": "GetAllAdresses",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/addresses",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"addresses"
-					]
+			"name": "LocationCoordinates",
+			"item": [
+				{
+					"name": "CreateLocationCoordinates",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"latitude\": \"{{LocationCoordinatesLatitude}}\",\r\n    \"longitude\": \"{{LocationCoordinatesLongitude}}\",\r\n    \"altitude\": \"{{LocationCoordinatesAltitude}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/coordinates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"coordinates"
+							]
+						},
+						"description": "Request to create new Location."
+					},
+					"response": []
 				},
-				"description": "Request to revice all stored Addresses."
-			},
-			"response": []
-		},
-		{
-			"name": "GetAdressesById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/addresses/{{AddressId}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"addresses",
-						"{{AddressId}}"
-					]
+				{
+					"name": "GetAllLocationCoordinates",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/coordinates",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"coordinates"
+							]
+						},
+						"description": "Request to revice all stored Locations."
+					},
+					"response": []
 				},
-				"description": "Request to get Address by its id."
-			},
-			"response": []
-		},
-		{
-			"name": "CreateLocation",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"latitude\": \"{{LocationLatitude}}\",\r\n    \"longitude\": \"{{LocationLongitude}}\",\r\n    \"altitude\": \"{{LocationAltitude}}\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/locations",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"locations"
-					]
-				},
-				"description": "Request to create new Location."
-			},
-			"response": []
-		},
-		{
-			"name": "GetAllLocations",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/locations",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"locations"
-					]
-				},
-				"description": "Request to revice all stored Locations."
-			},
-			"response": []
-		},
-		{
-			"name": "GetLocationById",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:40200/lds/api/v1.0/locations/{{LocationId}}",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "40200",
-					"path": [
-						"lds",
-						"api",
-						"v1.0",
-						"locations",
-						"{{LocationId}}"
-					]
-				},
-				"description": "Request to get Location by its id."
-			},
-			"response": []
+				{
+					"name": "GetLocationCoordinatesById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:40200/lds/api/v1.0/coordinates/{{LocationCoordinatesId}}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "40200",
+							"path": [
+								"lds",
+								"api",
+								"v1.0",
+								"coordinates",
+								"{{LocationCoordinatesId}}"
+							]
+						},
+						"description": "Request to get Location by its id."
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
 		}
 	],
 	"protocolProfileBehavior": {}

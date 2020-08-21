@@ -8,12 +8,12 @@ public enum ApiErrorCode {
     Duplicate,
     InternalServerError,
 
-    // Location
-    LocationNotFound,
-    LocationDuplicate,
+    // LocationCoordinates
+    LocationCoordinatesNotFound,
+    LocationCoordinatesDuplicate,
 
-    // Address
-    AddressNotFound,
-    AddressDuplicate;
+    // LocationAddress
+    LocationAddressNotFound,
+    LocationAddressDuplicate;
 
 }

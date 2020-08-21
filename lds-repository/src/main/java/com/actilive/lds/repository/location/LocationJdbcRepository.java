@@ -22,7 +22,7 @@ public class LocationJdbcRepository implements LocationRepository {
 
     @Override
     public Option<Location> trySave(@NotNull final Location location) {
-        return existsById(location.getId()) ? Option.of(save(location)) : Option.none();
+        return !existsById(location.getId()) ? Option.of(save(location)) : Option.none();
     }
 
     @Override

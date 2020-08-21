@@ -23,7 +23,8 @@ public class AddressJdbcRepository implements AddressRepository {
 
     @Override
     public Option<Address> trySave(@NotNull final Address address) {
-        return existsById(address.getId()) ? Option.of(save(address)) : Option.none();
+        final boolean exists = existsById(address.getId());
+        return !existsById(address.getId()) ? Option.of(save(address)) : Option.none();
     }
 
     @Override

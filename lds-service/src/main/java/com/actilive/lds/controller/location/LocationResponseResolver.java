@@ -1,11 +1,11 @@
-package com.actilive.lds.rest.location;
+package com.actilive.lds.controller.location;
 
 import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.core.application.location.LocationError;
 import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.LocationDto;
-import com.actilive.lds.rest.ResponseResolver;
-import com.actilive.lds.rest.location.adapter.LocationApiErrorAdapter;
+import com.actilive.lds.controller.ResponseResolver;
+import com.actilive.lds.controller.location.adapter.LocationApiErrorAdapter;
 import io.vavr.control.Either;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

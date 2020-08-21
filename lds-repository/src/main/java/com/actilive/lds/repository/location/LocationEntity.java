@@ -21,11 +21,11 @@ public class LocationEntity {
     String longitude;
     String altitude;
 
-    Location toDomain() {
+    Location ToDomain() {
         return new Location(id, latitude, longitude, altitude);
     }
 
-    static LocationEntity fromDomain(@NotNull final Location location) {
+    static LocationEntity FromDomain(@NotNull final Location location) {
         return new LocationEntity(location.getId(),
                                   location.getLatitude(),
                                   location.getLongitude(),

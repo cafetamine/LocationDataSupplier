@@ -1,4 +1,4 @@
-package com.actilive.lds.rest.location.adapter;
+package com.actilive.lds.controller.location.adapter;
 
 import com.actilive.lds.api.location.ApiLocation;
 import com.actilive.lds.core.application.location.command.LocationCommandCreate;

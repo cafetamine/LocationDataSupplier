@@ -1,4 +1,4 @@
-package com.actilive.lds.rest;
+package com.actilive.lds.controller;
 
 import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.api.ApiErrorCode;

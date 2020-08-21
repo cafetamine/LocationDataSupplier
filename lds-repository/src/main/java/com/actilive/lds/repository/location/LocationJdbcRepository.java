@@ -17,23 +17,23 @@ public class LocationJdbcRepository implements LocationRepository {
 
     @Override
     public Location save(@NotNull final Location location) {
-        return repository.save(LocationEntity.fromDomain(location)).toDomain();
+        return repository.save(LocationEntity.FromDomain(location)).ToDomain();
     }
 
     @Override
     public Option<Location> trySave(@NotNull final Location location) {
-        return existsById(location.getId()) ? Option.of(save(location)) : Option.none();
+        return !existsById(location.getId()) ? Option.of(save(location)) : Option.none();
     }
 
     @Override
     public Set<Location> findAll() {
-        return HashSet.ofAll(repository.findAll()).map(LocationEntity::toDomain);
+        return HashSet.ofAll(repository.findAll()).map(LocationEntity::ToDomain);
     }
 
     @Override
     public Option<Location> findById(@NotNull final Long id) {
         return Option.ofOptional(repository.findById(id))
-                     .map(LocationEntity::toDomain);
+                     .map(LocationEntity::ToDomain);
     }
 
     @Override

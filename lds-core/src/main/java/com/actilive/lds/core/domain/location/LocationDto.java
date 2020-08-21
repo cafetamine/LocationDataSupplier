@@ -10,7 +10,7 @@ public class LocationDto {
     String longitude;
     String altitude;
 
-    public static LocationDto fromDomain(final Location location) {
+    public static LocationDto FromDomain(final Location location) {
         return new LocationDto(location.getId(),
                                location.getLatitude(),
                                location.getLongitude(),

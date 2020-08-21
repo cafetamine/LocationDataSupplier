@@ -14,6 +14,10 @@ public enum ApiErrorCode {
 
     // LocationAddress
     LocationAddressNotFound,
-    LocationAddressDuplicate;
+    LocationAddressDuplicate,
+
+    // LocationStatus
+    LocationStatusNotFound,
+    LocationStatusDuplicate;
 
 }

@@ -1,6 +1,5 @@
 package com.actilive.lds.core.domain.location.status;
 
-import com.actilive.lds.core.domain.location.address.LocationAddressDto;
 import lombok.Value;
 
 import java.time.OffsetDateTime;
@@ -9,7 +8,7 @@ import java.time.OffsetDateTime;
 public class LocationStatusDto {
 
     Long id;
-    LocationStatusDto status;
+    LocationStatusRead status;
     OffsetDateTime lastReadDateTime;
     OffsetDateTime nextReadDatetime;
 

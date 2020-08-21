@@ -10,7 +10,7 @@ import java.time.OffsetDateTime;
 public class ApiLocationStatus {
 
     @NotNull
-    ApiLocationStatus status;
+    ApiLocationStatusRead status;
 
     @Nullable
     OffsetDateTime lastReadDatetime;

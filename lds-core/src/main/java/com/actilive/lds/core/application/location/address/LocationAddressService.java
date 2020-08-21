@@ -3,7 +3,7 @@ package com.actilive.lds.core.application.location.address;
 import com.actilive.lds.core.application.location.address.command.LocationAddressCreateCommand;
 import com.actilive.lds.core.application.location.address.command.LocationAddressUpdateCommand;
 import com.actilive.lds.core.domain.ErrorResult;
-import com.actilive.lds.core.domain.location.address.LoactionAddress;
+import com.actilive.lds.core.domain.location.address.LocationAddress;
 import com.actilive.lds.core.domain.location.address.LocationAddressDto;
 import io.vavr.collection.Set;
 import io.vavr.control.Either;
@@ -19,7 +19,7 @@ public class LocationAddressService implements LocationAddressFacade {
 
     @Override
     public Either<ErrorResult<LocationAddressError>, LocationAddressDto> create(@NotNull LocationAddressCreateCommand command) {
-        return repository.trySave(LoactionAddress.Create(command))
+        return repository.trySave(LocationAddress.Create(command))
                          .map(LocationAddressDto::FromDomain)
                          .toEither(new ErrorResult<>(LocationAddressError.Duplicate, "LocationAddress already exists."));
     }
@@ -38,7 +38,7 @@ public class LocationAddressService implements LocationAddressFacade {
 
     @Override
     public Either<ErrorResult<LocationAddressError>, LocationAddressDto> update(@NotNull LocationAddressUpdateCommand address) {
-        return repository.update(LoactionAddress.Create(address))
+        return repository.update(LocationAddress.Create(address))
                          .map(LocationAddressDto::FromDomain)
                          .toEither(new ErrorResult<>(LocationAddressError.NotFound, "LocationAddress (id=" + address.getId() + ") not found."));
     }

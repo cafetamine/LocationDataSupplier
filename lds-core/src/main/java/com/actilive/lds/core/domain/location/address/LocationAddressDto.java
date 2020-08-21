@@ -14,7 +14,7 @@ public class LocationAddressDto {
     String postalCode;
 
 
-    public static LocationAddressDto FromDomain(final LoactionAddress address) {
+    public static LocationAddressDto FromDomain(final LocationAddress address) {
         return new LocationAddressDto(address.getId(),
                                       address.getCountry(),
                                       address.getState(),

@@ -1,6 +1,6 @@
 package com.actilive.lds.core.application.location.address;
 
-import com.actilive.lds.core.domain.location.address.LoactionAddress;
+import com.actilive.lds.core.domain.location.address.LocationAddress;
 import io.vavr.collection.Set;
 import io.vavr.control.Option;
 import org.jetbrains.annotations.NotNull;
@@ -15,7 +15,7 @@ public interface LocationAddressRepository {
      * @param address with nullable id.
      * @return saved LocationAddress instance with unique id.
      */
-    LoactionAddress save(@NotNull LoactionAddress address);
+    LocationAddress save(@NotNull LocationAddress address);
 
     /**
      * Attempts to create LocationAddressEntity and save it in database.
@@ -24,18 +24,18 @@ public interface LocationAddressRepository {
      * @param address with nullable id.
      * @return saved LocationAddress instance or io.vavr.control.Option.None.
      */
-    Option<LoactionAddress> trySave(@NotNull LoactionAddress address);
+    Option<LocationAddress> trySave(@NotNull LocationAddress address);
 
     /**
      * @return List of all LoactionAddresses stored in database.
      */
-    Set<LoactionAddress> findAll(); // TODO [future] performance?
+    Set<LocationAddress> findAll(); // TODO [future] performance?
 
     /**
      * @param id cannot be null.
      * @return LocationAddress retrieved form database if exists else io.vavr.control.Option.None.
      */
-    Option<LoactionAddress> findById(@NotNull Long id);
+    Option<LocationAddress> findById(@NotNull Long id);
 
     /**
      * Attempts to retrieve LocationAddress form database by provided id.
@@ -45,7 +45,7 @@ public interface LocationAddressRepository {
      * @param address with updated data (other than id).
      * @return updated LocationAddress or io.vavr.control.Option.None.
      */
-    Option<LoactionAddress> update(@NotNull LoactionAddress address);
+    Option<LocationAddress> update(@NotNull LocationAddress address);
 
     /**
      * Attempts retrieve LocationAddress form database by provided id.

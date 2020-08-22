@@ -1,11 +1,11 @@
-package com.actilive.lds.controller.coordinates;
+package com.actilive.lds.controller.location.coordinates;
 
 import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.core.application.location.coordinates.LocationCoordinatesError;
 import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.coordinates.LocationCoordinatesDto;
 import com.actilive.lds.controller.ResponseResolver;
-import com.actilive.lds.controller.coordinates.adapter.LocationCoordinatesApiErrorAdapter;
+import com.actilive.lds.controller.location.coordinates.adapter.LocationCoordinatesApiErrorAdapter;
 import io.vavr.control.Either;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

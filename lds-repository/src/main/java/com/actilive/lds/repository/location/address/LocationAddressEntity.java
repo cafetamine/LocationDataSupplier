@@ -1,6 +1,6 @@
 package com.actilive.lds.repository.location.address;
 
-import com.actilive.lds.core.domain.location.address.LoactionAddress;
+import com.actilive.lds.core.domain.location.address.LocationAddress;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,11 +24,11 @@ public class LocationAddressEntity {
     String number;
     String postalCode;
 
-    LoactionAddress ToDomain() {
-        return new LoactionAddress(id, country, state, city, street, number, postalCode);
+    LocationAddress ToDomain() {
+        return new LocationAddress(id, country, state, city, street, number, postalCode);
     }
 
-    static LocationAddressEntity FromDomain(@NotNull final LoactionAddress address) {
+    static LocationAddressEntity FromDomain(@NotNull final LocationAddress address) {
         return new LocationAddressEntity(address.getId(),
                                          address.getCountry(),
                                          address.getState(),

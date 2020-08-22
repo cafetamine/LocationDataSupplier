@@ -10,7 +10,7 @@ import lombok.experimental.FieldDefaults;
 @Data
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class LoactionAddress {
+public class LocationAddress {
 
     Long id;
     String country;
@@ -20,8 +20,8 @@ public class LoactionAddress {
     String number;
     String postalCode;
 
-    public static LoactionAddress Create(final LocationAddressCreateCommand address) {
-        return new LoactionAddress(null,
+    public static LocationAddress Create(final LocationAddressCreateCommand address) {
+        return new LocationAddress(null,
                                    address.getCountry(),
                                    address.getState(),
                                    address.getCity(),
@@ -30,8 +30,8 @@ public class LoactionAddress {
                                    address.getPostalCode());
     }
 
-    public static LoactionAddress Create(final LocationAddressUpdateCommand address) {
-        return new LoactionAddress(address.getId(),
+    public static LocationAddress Create(final LocationAddressUpdateCommand address) {
+        return new LocationAddress(address.getId(),
                                    address.getCountry(),
                                    address.getState(),
                                    address.getCity(),

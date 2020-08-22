@@ -5,8 +5,136 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/>
+    </parent>
     <groupId>com.actilive</groupId>
     <artifactId>lds</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+
+        <revision>0.0.1-SNAPSHOT</revision>
+
+        <logbook.version>2.1.4</logbook.version>
+        <lombok.version>1.18.12</lombok.version>
+        <vavr.version>0.10.3</vavr.version>
+        <annotations.version>19.0.0</annotations.version>
+        <jackson.version>2.11.1</jackson.version>
+        <javax.version>2.0.1.Final</javax.version>
+
+        <spring-cloud.version>Hoxton.SR6</spring-cloud.version>
+    </properties>
+
+    <modules>
+        <module>lds-api</module>
+        <module>lds-core</module>
+        <module>lds-repository</module>
+        <module>lds-service</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- internal modules -->
+            <dependency>
+                <groupId>com.actilive</groupId>
+                <artifactId>lds-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.actilive</groupId>
+                <artifactId>lds-core</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.actilive</groupId>
+                <artifactId>lds-repository</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <!-- external dependencies -->
+            <dependency>
+                <groupId>org.zalando</groupId>
+                <artifactId>logbook-spring-boot-starter</artifactId>
+                <version>${logbook.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.vavr</groupId>
+                <artifactId>vavr</artifactId>
+                <version>${vavr.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jetbrains</groupId>
+                <artifactId>annotations</artifactId>
+                <version>${annotations.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${javax.version}</version>
+            </dependency>
+            <!-- cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>flatten-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>flatten</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>flatten</goal>
+                        </goals>
+                        <configuration>
+                            <flattenMode>clean</flattenMode>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>flatten.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>clean</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

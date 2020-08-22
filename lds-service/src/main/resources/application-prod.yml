@@ -1,0 +1,38 @@
+server:
+  port: 40200
+
+logging:
+  config: classpath:log4j2-dev.yml
+
+logbook:
+  format:
+    style: http
+  filter:
+    enabled: true
+
+spring:
+  profiles:
+    include: info
+  application:
+    name: @project.artifactId@
+  datasource:
+      url: jdbc:h2:mem:testdb
+      driverClassName: org.h2.Driver
+      username: sa
+      password:
+  h2:
+    console:
+      enabled: false
+      settings:
+        trace: false
+        webAllowOthers: false
+
+eureka:
+  instance:
+    hostname: localhost
+    instanceId: ${spring.application.name}-${server.port}
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://localhost:40100/eureka

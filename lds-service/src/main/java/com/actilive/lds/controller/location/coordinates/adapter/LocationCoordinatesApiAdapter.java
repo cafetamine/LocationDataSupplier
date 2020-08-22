@@ -1,4 +1,4 @@
-package com.actilive.lds.controller.coordinates.adapter;
+package com.actilive.lds.controller.location.coordinates.adapter;
 
 import com.actilive.lds.api.location.coordinates.ApiLocationCoordinates;
 import com.actilive.lds.core.application.location.coordinates.command.LocationCoordinatesCreateCommand;

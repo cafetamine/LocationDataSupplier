@@ -1,8 +1,8 @@
-package com.actilive.lds.controller.address;
+package com.actilive.lds.controller.location.address;
 
 import com.actilive.lds.api.ApiErrorResponse;
 import com.actilive.lds.controller.ResponseResolver;
-import com.actilive.lds.controller.address.adapter.LocationAddressApiErrorAdapter;
+import com.actilive.lds.controller.location.address.adapter.LocationAddressApiErrorAdapter;
 import com.actilive.lds.core.application.location.address.LocationAddressError;
 import com.actilive.lds.core.domain.ErrorResult;
 import com.actilive.lds.core.domain.location.address.LocationAddressDto;

@@ -1,4 +1,4 @@
-package com.actilive.lds.controller.status.adapter;
+package com.actilive.lds.controller.location.status.adapter;
 
 import com.actilive.lds.api.ApiErrorCode;
 import com.actilive.lds.core.application.location.status.LocationStatusError;

@@ -1,7 +1,7 @@
-package com.actilive.lds.controller.status;
+package com.actilive.lds.controller.location.status;
 
 import com.actilive.lds.api.location.status.ApiLocationStatus;
-import com.actilive.lds.controller.status.adapter.LocationStatusApiAdapter;
+import com.actilive.lds.controller.location.status.adapter.LocationStatusApiAdapter;
 import com.actilive.lds.core.application.location.status.LocationStatusError;
 import com.actilive.lds.core.application.location.status.LocationStatusFacade;
 import com.actilive.lds.core.domain.ErrorResult;

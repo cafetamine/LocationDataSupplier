@@ -1,4 +1,4 @@
-package com.actilive.lds.controller.status.adapter;
+package com.actilive.lds.controller.location.status.adapter;
 
 
 import com.actilive.lds.api.location.status.ApiLocationStatusRead;

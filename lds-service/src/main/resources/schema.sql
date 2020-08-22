@@ -1,5 +1,5 @@
-drop table if exists LOCATION;
-drop table if exists ADDRESS;
+drop table if exists LOCATION_COORDINATES;
+drop table if exists LOCATION_ADDRESS;
 
 create table LOCATION_COORDINATES(
   Id bigint auto_increment primary key,
@@ -16,4 +16,11 @@ create table LOCATION_ADDRESS(
   Street varchar(255) not null,
   Number varchar(25) not null,
   PostalCode varchar(25) not null
+);
+
+create table LOCATION_STATUS(
+  Id bigint auto_increment primary key,
+  Status varchar(25) not null,
+  LastReadDateTime datetime2,
+  NextReadDatetime datetime2 not null
 );
